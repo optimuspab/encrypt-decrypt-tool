@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt & Decrypt Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Encrypter/Decrypter</span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="starter-template text-center mx-auto">
+            <h1>AES Encrypt & Decrypt Tool</h1>
+            <p class="lead">AES encryption and decryption tool that works only in CBC (Cipher Block Chaining) mode. It allows 128-bit, 192-bit and 256-bit encryption.</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form id="encrypt-form">
+                        <h2>Encrypter</h2>
+
+                        <div class="form-group">
+                            <label for="text-to-encrypt">Enter text to be Encrypted</label>
+                            <input type="text" class="form-control" id="text-to-encrypt" name="text-to-encrypt" placeholder="Enter a string to be encrypted.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bits-for-encrypt">Key Size in bits</label>
+                            <select class="form-control" id="bits-for-encrypt" name="bits-for-encrypt">
+                                <option value="128">128</option>
+                                <option value="192">192</option>
+                                <option value="256">256</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="encrypt-secret-key">Enter Secret Key</label>
+                            <input type="text" class="form-control" id="encrypt-secret-key" name="encrypt-secret-key" placeholder="Enter a secret key.">
+                        </div>
+
+                        <button type="button" class="btn btn-primary mt-1" onclick="encryptForm()">Encrypt</button>
+
+                        <div class="form-group">
+                            <label for="encrypted-result">AES Encrypted Output:</label>
+                            <input type="text" class="form-control" id="encrypted-result" placeholder="The result will be displayed here." readonly>
+                        </div>
+
+                        <button type="button" class="btn btn-danger mt-1"
+                            onclick="clearForm('encrypt-form')">Clear</button>
+                    </form>
+                </div>
+
+                <!-- Decrypt form -->
+                <div class="col-md-6">
+                    <form id="decrypt-form">
+                        <h2>Decrypter</h2>
+
+                        <div class="form-group">
+                            <label for="text-to-decrypt">Enter text to be Decrypted</label>
+                            <input type="text" class="form-control" id="text-to-decrypt" name="text-to-decrypt" placeholder="Enter a string to be decrypted.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bits-for-decrypt">Key Size in bits</label>
+                            <select class="form-control" id="bits-for-decrypt" name="bits-for-decrypt">
+                                <option value="128">128</option>
+                                <option value="192">192</option>
+                                <option value="256">256</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="decrypt-secret-key">Enter Secret Key used for Encryption</label>
+                            <input type="text" class="form-control" id="decrypt-secret-key" name="decrypt-secret-key" placeholder="Enter the secret key.">
+                        </div>
+
+
+                        <button type="button" class="btn btn-primary mt-1" onclick="decryptForm()">Decrypt</button>
+
+                        <div class="form-group">
+                            <label for="decrypted-result">AES Encrypted Output:</label>
+                            <input type="text" class="form-control" id="decrypted-result" placeholder="The result will be displayed here." readonly>
+                        </div>
+
+                        <button type="button" class="btn btn-danger mt-1"
+                            onclick="clearForm('decrypt-form')">Clear</button>
+
+                    </form>
+                </div>
+            </div>
+    </main>
+    <footer class="py-3 my-4">
+        <p class="text-center text-body-secondary">&copy; 2024 Pablo Guillermet</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
