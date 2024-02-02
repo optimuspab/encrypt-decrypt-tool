@@ -59,4 +59,19 @@ function initializePage() {
 
     };
     
+    window.copyResult = function (resultId) {
+        const resultElement = document.getElementById(resultId);
+        resultElement.select();
+        resultElement.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        resultElement.setSelectionRange(0, 0);
+        Toastify({
+
+            text: "Result copied to clipboard!",
+            
+            duration: 3000
+            
+            }).showToast();
+    };
+
 };
